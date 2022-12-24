@@ -17,6 +17,8 @@ class Router {
             '/legal/deposit' => [LegalController::class, 'deposit'],
         ],
         'post' => [
+            '/calculate_table' => [MainController::class, 'calculate'],
+
             '/individual/credit' => [IndividualController::class, 'storeCredit'],
             '/individual/deposit' => [IndividualController::class, 'storeDeposit'],
 

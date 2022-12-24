@@ -3,11 +3,24 @@
 namespace App\Controllers;
 
 use App\Core\View;
+use App\Models\Credits\CreditPrint;
+use App\Models\Credits\Credits;
 
 class MainController
 {
     public function index(): void
     {
         View::render('index');
+    }
+
+    public function calculate(): void
+    {
+        $sum = (float)$_REQUEST['sum'];
+        $term = (int)$_REQUEST['term'];
+
+        $creditPrint = new CreditPrint();
+        $table = Credits::calculateTable($sum, $term);
+
+        echo $creditPrint->print($table);
     }
 }

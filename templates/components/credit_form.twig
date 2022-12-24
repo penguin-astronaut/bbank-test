@@ -30,36 +30,38 @@
         </div>
     </div>
 
-    <div class="mb-3">
-        <label for="pay" class="form-label">Ежемесячный платёж</label>
-        <div class="input-group">
-            <input id="pay" type="number" class="form-control" readonly>
-            <span class="input-group-text">₽</span>
-        </div>
-    </div>
+    <button type="button" class="btn btn-info calculate">Рассчитать плтатежи</button>
+
+    <div class="table-wrapper"></div>
 </div>
 
 <script>
-    const rate = 20;
     const sumInput = document.querySelector('#sum');
     const termInput = document.querySelector('#term');
-    const payInput = document.querySelector('#pay');
-    const monthlyRate = rate / 12 / 100;
+    const tableWrapper = document.querySelector('.table-wrapper');
 
-    sumInput.addEventListener('change', () => {
-        calculatePayment();
-    })
+    document.querySelector('.calculate').addEventListener('click', async () => {
+        const errorMessage = document.querySelector('.errorMessage');
+        errorMessage && errorMessage.remove();
+        const sum = sumInput.value;
+        const term = termInput.value;
 
-    termInput.addEventListener('change', () => {
-        calculatePayment();
-    })
-
-    function calculatePayment()
-    {
-        if (!sumInput.value || !termInput.value) {
-            payInput.value = 0;
-            return;
+        if (!sum || !term) {
+            return addError('Необходимо заполнить сумму и срок кредита')
         }
-        payInput.value = (sumInput.value * monthlyRate * Math.pow(1 + monthlyRate, termInput.value) / (Math.pow(1 + monthlyRate, termInput.value) -1)).toFixed(2);
+
+        const res = await fetch('/calculate_table', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `sum=${sum}&term=${term}`
+        })
+
+        tableWrapper.innerHTML = await res.text();
+    });
+
+    function addError(message) {
+       tableWrapper.innerHTML = `<p class="text-danger errorMessage">${message}</p>`
     }
 </script>

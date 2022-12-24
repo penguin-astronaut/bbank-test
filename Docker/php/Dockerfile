@@ -3,6 +3,7 @@ FROM php:8.2-fpm
 RUN apt-get update && apt-get install -y \
       apt-utils \
       libpq-dev \
+      libxslt1-dev \
       libpng-dev \
       libzip-dev \
       zip unzip \
@@ -11,6 +12,7 @@ RUN apt-get update && apt-get install -y \
       docker-php-ext-install bcmath && \
       docker-php-ext-install gd && \
       docker-php-ext-install zip && \
+      docker-php-ext-install xsl && \
       apt-get clean && \
       rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
