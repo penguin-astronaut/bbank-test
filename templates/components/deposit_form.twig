@@ -1,0 +1,62 @@
+<div class="card-body">
+    <div class="mb-3">
+        <label for="term" class="form-label">Срок в месяцах</label>
+        <div class="input-group">
+            <select name="term" id="term" class="form-select">
+                {% for variant in variants %}
+                    <option value="{{ variant.term }}">{{ variant.term }}</option>
+                {% endfor %}
+            </select>
+            {% if errors.term %}
+                <div class="invalid-feedback">
+                    {{ errors.term }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="rate" class="form-label">Ставка</label>
+        <div class="input-group">
+            <input
+                    readonly
+                    value="{{ _request.rate ? _request.rate : variants.0.rate}}"
+                    id="rate"
+                    type="number"
+                    name="rate"
+                    class="form-control {{ errors.rate ? 'is-invalid' : '' }}">
+            <span class="input-group-text">%</span>
+            {% if errors.rate %}
+                <div class="invalid-feedback">
+                    {{ errors.rate }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="capitalization" class="form-label">Переодичность капитализации</label>
+        <div class="input-group">
+            <select name="capitalization" id="capitalization" class="form-select {{ errors.capitalization ? 'is-invalid' : '' }}">
+                {% for val, name in capitalization %}
+                    <option value="{{ val }}">{{ name }}</option>
+                {% endfor %}
+            </select>
+            {% if errors.capitalization %}
+                <div class="invalid-feedback">
+                    {{ errors.capitalization }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script>
+    const variants = JSON.parse('{{ variants | json_encode | raw }}');
+    const rateInput = document.querySelector('#rate');
+
+    document.querySelector('#term').addEventListener('change', (e) => {
+        const variant = variants.find(item => item.term === Number(e.target.value));
+        rateInput.value = variant.rate;
+    })
+</script>

@@ -1,0 +1,48 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+    <div class="my-container d-flex justify-content-center align-items-center">
+        <div class="row w-100">
+            <div class="col-md-6 mx-auto">
+                <div class="card">
+                    <div class="card-header text-center">
+                        Выберете продукт
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="client" class="form-label">Клиент</label>
+                            <select class="form-select" id="client">
+                                <option value="individual">Физическое лицо</option>
+                                <option value="legal">Юридическое лицо</option>
+                            </select>
+                        </div>
+                        <div class="d-flex justify-content-center gap-2" id="individualLinks">
+                            <a href="/individual/credit" class="btn btn-warning">Кредит</a>
+                            <a href="/individual/deposit" class="btn btn-success">Вклад</a>
+                        </div>
+                        <div class="d-flex justify-content-center gap-2 d-none" id="legalLinks">
+                            <a href="/legal/credit" class="btn btn-warning">Кредит</a>
+                            <a href="/legal/deposit" class="btn btn-success">Вклад</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const individualLinks = document.querySelector('#individualLinks');
+        const legalLinks = document.querySelector('#legalLinks');
+
+        document.querySelector('#client').addEventListener('change', (e) => {
+            if (e.target.value === 'individual') {
+                individualLinks.classList.remove('d-none');
+                legalLinks.classList.add('d-none');
+            } else {
+                legalLinks.classList.remove('d-none');
+                individualLinks.classList.add('d-none');
+            }
+        })
+    </script>
+{% endblock %}

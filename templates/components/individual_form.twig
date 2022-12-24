@@ -1,0 +1,58 @@
+<div class="fiz-form">
+    <div class="mb-3">
+        <label for="name" class="form-label">Ф.И.О</label>
+        <input value="{{ _request.full_name }}" id="name" name="full_name" type="text" class="form-control {{ errors.full_name ? 'is-invalid' : '' }}">
+        {% if errors.full_name %}
+            <div class="invalid-feedback">
+                {{ errors.full_name }}
+            </div>
+        {% endif %}
+    </div>
+    <div class="mb-3">
+        <label for="inn" class="form-label">ИНН</label>
+        <input value="{{ _request.inn }}" id="inn" name="inn" type="text" class="form-control {{ errors.inn ? 'is-invalid' : '' }}">
+        {% if errors.inn %}
+            <div class="invalid-feedback">
+                {{ errors.inn }}
+            </div>
+        {% endif %}
+    </div>
+    <div class="mb-3">
+        <label for="birthday" class="form-label">Дата рождения</label>
+        <input value="{{ _request.birthday }}" id="birthday" name="birthday" type="date" class="form-control {{ errors.birthday ? 'is-invalid' : '' }}">
+        {% if errors.birthday %}
+            <div class="invalid-feedback">
+                {{ errors.birthday}}
+            </div>
+        {% endif %}
+    </div>
+
+    <label class="form-label">Паспортные данные</label>
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <input value="{{ _request.passport_series }}" class="form-control {{ errors.passport_series ? 'is-invalid' : '' }}" type="number" placeholder="Серия" name="passport_series">
+            {% if errors.birthday %}
+                <div class="invalid-feedback">
+                    {{ errors.birthday}}
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-md-4">
+            <input value="{{ _request.passport_number }}" class="form-control {{ errors.passport_number ? 'is-invalid' : '' }}" type="number" placeholder="Номер" name="passport_number">
+            {% if errors.passport_number %}
+                <div class="invalid-feedback">
+                    {{ errors.passport_number }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-md-4">
+            <input value="{{ _request.passport_dat_issue }}" class="form-control {{ errors.passport_date_issue ? 'is-invalid' : '' }}" type="date" placeholder="Дата выдачи" name="passport_date_issue">
+            <div class="form-text">дата выдачи</div>
+            {% if errors.passport_date_issue %}
+                <div class="invalid-feedback">
+                    {{ errors.passport_date_issue }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

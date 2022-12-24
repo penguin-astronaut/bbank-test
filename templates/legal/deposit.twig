@@ -1,0 +1,10 @@
+{% extends '/components/product_form.twig' %}
+{% set product = 'Вклад' %}
+
+{% block product %}
+    {% include '/components/deposit_form.twig' %}
+{% endblock %}
+
+{% block client %}
+    {% include '/components/legal_form.twig' %}
+{% endblock %}

@@ -1,0 +1,72 @@
+<div class="legal-form">
+    <div class="border rounded mb-4 p-2">
+        <p class="h4 mb-3">Данные Руководителя</p>
+        <div class="mb-3">
+            <label for="director_name" class="form-label">Ф.И.О</label>
+            <input value="{{ _request.director_name }}" id="director_name" name="director_name" type="text" class="form-control {{ errors.director_name ? 'is-invalid' : '' }}">
+            {% if errors.director_name %}
+                <div class="invalid-feedback">
+                    {{ errors.director_name }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            <label for="director_inn" class="form-label">ИНН</label>
+            <input value="{{ _request.director_inn }}" id="director_inn" name="director_inn" type="text" class="form-control {{ errors.director_inn ? 'is-invalid' : '' }}">
+            {% if errors.director_inn %}
+                <div class="invalid-feedback">
+                    {{ errors.director_inn }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="border rounded mb-4 p-2">
+        <p class="h4 mb-3">Данные Организации</p>
+        <div class="mb-3">
+            <label for="name" class="form-label">Наименование</label>
+            <input value="{{ _request.name }}" id="name" name="name" type="text" class="form-control {{ errors.name ? 'is-invalid' : '' }}">
+            {% if errors.name %}
+                <div class="invalid-feedback">
+                    {{ errors.name }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            <label for="address" class="form-label">Адрес</label>
+            <input value="{{ _request.address }}" id="address" name="address" type="text" class="form-control {{ errors.address ? 'is-invalid' : '' }}">
+            {% if errors.address %}
+                <div class="invalid-feedback">
+                    {{ errors.address }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            <label for="inn" class="form-label">ИНН</label>
+            <input value="{{ _request.inn }}" id="inn" name="inn" type="text" class="form-control {{ errors.inn ? 'is-invalid' : '' }}">
+            {% if errors.inn %}
+                <div class="invalid-feedback">
+                    {{ errors.inn }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            <label for="ogrn" class="form-label">ОГРН</label>
+            <input value="{{ _request.ogrn }}" id="ogrn" name="ogrn" type="text" class="form-control {{ errors.ogrn ? 'is-invalid' : '' }}">
+            {% if errors.ogrn %}
+                <div class="invalid-feedback">
+                    {{ errors.ogrn }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            <label for="kpp" class="form-label">КПП</label>
+            <input value="{{ _request.kpp }}" id="kpp" name="kpp" type="text" class="form-control {{ errors.kpp ? 'is-invalid' : '' }}">
+            {% if errors.kpp %}
+                <div class="invalid-feedback">
+                    {{ errors.kpp }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
