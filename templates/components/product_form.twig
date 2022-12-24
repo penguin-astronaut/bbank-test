@@ -48,29 +48,4 @@
             </div>
         </div>
     </div>
-
-    <script>
-        const rate = 20;
-        const sumInput = document.querySelector('#sum');
-        const termInput = document.querySelector('#term');
-        const payInput = document.querySelector('#pay');
-        const monthlyRate = rate / 12 / 100;
-
-        sumInput.addEventListener('change', () => {
-            calculatePayment();
-        })
-
-        termInput.addEventListener('change', () => {
-            calculatePayment();
-        })
-
-        function calculatePayment()
-        {
-            if (!sumInput.value || !termInput.value) {
-                payInput.value = 0;
-                return;
-            }
-            payInput.value = (sumInput.value * monthlyRate * Math.pow(1 + monthlyRate, termInput.value) / (Math.pow(1 + monthlyRate, termInput.value) -1)).toFixed(2);
-        }
-    </script>
 {% endblock %}
