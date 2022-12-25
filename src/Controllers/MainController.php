@@ -3,8 +3,8 @@
 namespace App\Controllers;
 
 use App\Core\View;
-use App\Models\Credits\CreditPrint;
 use App\Models\Credits\Credits;
+use App\Utils\CreditPrint;
 
 class MainController
 {

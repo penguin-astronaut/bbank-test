@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Credits;
+namespace App\Utils;
 
 use DOMDocument;
 use SimpleXMLElement;
@@ -13,7 +13,7 @@ class CreditPrint
         $xml = new DOMDocument();
         $xml->loadXML($this->arrayToXml($data));
         $xsl = new DOMDocument;
-        $xsl->load(__DIR__ . '/../../../templates/xsl/payment_table.xsl');
+        $xsl->load(__DIR__ . '/../../templates/xsl/payment_table.xsl');
         $proc = new XSLTProcessor;
         $proc->importStyleSheet($xsl);
 
