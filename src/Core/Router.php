@@ -33,7 +33,8 @@ class Router {
         $route = $this->routes[$method][$_SERVER['REQUEST_URI']] ?? null;
 
         if (!$route) {
-            exit('Не найдено');
+            header('Location: /');
+            exit();
         }
 
         $controller = new $route[0];
