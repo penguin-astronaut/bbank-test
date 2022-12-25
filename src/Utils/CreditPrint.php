@@ -28,6 +28,11 @@ class CreditPrint
             $parent = $root->addChild('payment');
 
             foreach ($item as $key => $value) {
+                if ($key === 'date') {
+                    $value = new \DateTime($value);
+                    $value = $value->format('d.m.Y');
+                }
+
                 $parent->addChild($key, $value);
             }
         }
