@@ -9,8 +9,11 @@ try {
     $app = new \App\Core\App();
     $app->run();
 } catch (Exception $exception) {
-    echo $exception->getMessage();
-    exit('В работе приложения произошла ошибка');
+    if ($_ENV['MODE'] === 'development') {
+        echo $exception->getMessage();
+    } else {
+        exit('В работе приложения произошла ошибка');
+    }
 }
 
 
